@@ -1,0 +1,14 @@
+<IfModule mod_headers.c>
+  <FilesMatch "^(index\.html|flutter_bootstrap\.js|flutter_service_worker\.js|main\.dart\.js|version\.json)$">
+    Header always set Cache-Control "no-cache, no-store, must-revalidate"
+    Header always set Pragma "no-cache"
+    Header always set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
